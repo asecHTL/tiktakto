@@ -1,6 +1,7 @@
 package at.htlgkr.tiktakto;
 
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -55,234 +56,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.field00){
-            int i = Logic.getPlayerRightNow();
-            if (i == 0){
-                //Player 1
-                int statusField = Logic.checkStatusFieldPlayerOne(0,0);
-                if (statusField == 0){
-                    Logic.addFieldPlayerOne(0,0);
-                    field00.setText("Player One");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }else {
-                //Player 2
-                int statusField = Logic.checkStatusFieldPlayerTwo(0,0);
-                if (statusField == 0){
-                    Logic.addFieldPlayerTwo(0,0);
-                    field00.setText("Player Two");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }
+            int temp = Modell.addFieldToPlayer(0,0);
+            eventHandler(temp,field00);
         } else if (v.getId() == R.id.field01) {
-            int i = Logic.getPlayerRightNow();
-            if (i == 0){
-                //Player 1
-                int statusField = Logic.checkStatusFieldPlayerOne(0,1);
-                if (statusField == 0){
-                    Logic.addFieldPlayerOne(0,1);
-                    field00.setText("Player One");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }else {
-                //Player 2
-                int statusField = Logic.checkStatusFieldPlayerTwo(0,1);
-                if (statusField == 0){
-                    Logic.addFieldPlayerTwo(0,1);
-                    field00.setText("Player Two");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }
+            int temp = Modell.addFieldToPlayer(0,1);
+            eventHandler(temp,field01);
         } else if (v.getId() == R.id.field02) {
-            int i = Logic.getPlayerRightNow();
-            if (i == 0){
-                //Player 1
-                int statusField = Logic.checkStatusFieldPlayerOne(0,2);
-                if (statusField == 0){
-                    Logic.addFieldPlayerOne(0,2);
-                    field00.setText("Player One");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }else {
-                //Player 2
-                int statusField = Logic.checkStatusFieldPlayerTwo(0,2);
-                if (statusField == 0){
-                    Logic.addFieldPlayerTwo(0,2);
-                    field00.setText("Player Two");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }
+            int temp = Modell.addFieldToPlayer(0,2);
+            eventHandler(temp,field02);
         } else if (v.getId() == R.id.field10) {
-            int i = Logic.getPlayerRightNow();
-            if (i == 0){
-                //Player 1
-                int statusField = Logic.checkStatusFieldPlayerOne(1,0);
-                if (statusField == 0){
-                    Logic.addFieldPlayerOne(1,0);
-                    field00.setText("Player One");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }else {
-                //Player 2
-                int statusField = Logic.checkStatusFieldPlayerTwo(1,0);
-                if (statusField == 0){
-                    Logic.addFieldPlayerTwo(1,0);
-                    field00.setText("Player Two");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }
+            int temp = Modell.addFieldToPlayer(1,0);
+            eventHandler(temp,field10);
         } else if (v.getId() == R.id.field11) {
-            int i = Logic.getPlayerRightNow();
-            if (i == 0){
-                //Player 1
-                int statusField = Logic.checkStatusFieldPlayerOne(1,1);
-                if (statusField == 0){
-                    Logic.addFieldPlayerOne(1,1);
-                    field00.setText("Player One");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }else {
-                //Player 2
-                int statusField = Logic.checkStatusFieldPlayerTwo(1,1);
-                if (statusField == 0){
-                    Logic.addFieldPlayerTwo(1,1);
-                    field00.setText("Player Two");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }
+            int temp = Modell.addFieldToPlayer(1,1);
+            eventHandler(temp,field11);
         } else if (v.getId() == R.id.field12) {
-            int i = Logic.getPlayerRightNow();
-            if (i == 0){
-                //Player 1
-                int statusField = Logic.checkStatusFieldPlayerOne(1,2);
-                if (statusField == 0){
-                    Logic.addFieldPlayerOne(1,2);
-                    field00.setText("Player One");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }else {
-                //Player 2
-                int statusField = Logic.checkStatusFieldPlayerTwo(1,2);
-                if (statusField == 0){
-                    Logic.addFieldPlayerTwo(1,2);
-                    field00.setText("Player Two");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }
-
+            int temp = Modell.addFieldToPlayer(1,2);
+            eventHandler(temp,field12);
         } else if (v.getId() == R.id.field20) {
-            int i = Logic.getPlayerRightNow();
-            if (i == 0){
-                //Player 1
-                int statusField = Logic.checkStatusFieldPlayerOne(2,0);
-                if (statusField == 0){
-                    Logic.addFieldPlayerOne(2,0);
-                    field00.setText("Player One");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }else {
-                //Player 2
-                int statusField = Logic.checkStatusFieldPlayerTwo(2,0);
-                if (statusField == 0){
-                    Logic.addFieldPlayerTwo(2,0);
-                    field00.setText("Player Two");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }
-
+            int temp = Modell.addFieldToPlayer(2,0);
+            eventHandler(temp,field20);
         } else if (v.getId() == R.id.field21) {
-            int i = Logic.getPlayerRightNow();
-            if (i == 0){
-                //Player 1
-                int statusField = Logic.checkStatusFieldPlayerOne(2,1);
-                if (statusField == 0){
-                    Logic.addFieldPlayerOne(2,1);
-                    field00.setText("Player One");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }else {
-                //Player 2
-                int statusField = Logic.checkStatusFieldPlayerTwo(2,1);
-                if (statusField == 0){
-                    Logic.addFieldPlayerTwo(2,1);
-                    field00.setText("Player Two");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }
-
+            int temp = Modell.addFieldToPlayer(2,1);
+            eventHandler(temp,field21);
         } else if (v.getId() == R.id.field22) {
-            int i = Logic.getPlayerRightNow();
-            if (i == 0){
-                //Player 1
-                int statusField = Logic.checkStatusFieldPlayerOne(2,2);
-                if (statusField == 0){
-                    Logic.addFieldPlayerOne(2,2);
-                    field00.setText("Player One");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
-            }else {
-                //Player 2
-                int statusField = Logic.checkStatusFieldPlayerTwo(2,2);
-                if (statusField == 0){
-                    Logic.addFieldPlayerTwo(2,2);
-                    field00.setText("Player Two");
-                } else if (statusField == 1) {
-                    textView.setText("Field is already taken by Player one!");
-                } else if (statusField == 2) {
-                    textView.setText("Field already taken by Player two!");
-                }
+            int temp = Modell.addFieldToPlayer(2,2);
+            eventHandler(temp,field22);
             }
 
+
+    }
+
+    public void eventHandler(int returnValue,Button button){
+        switch (returnValue){
+            case 0 :
+                //Feld wurde zu Player one hinzugefügt
+                button.setText("X");
+            case 1:
+                textView.setText("Player One won !!!!!!");
+            case 2:
+                //Feld wurde zu Player two hinzugefügt
+                button.setText("O");
+            case 3:
+                textView.setText("Player Two won !!!!!!");
+            case 100:
+                System.out.println("Error while playing");
+            default:
+                System.out.println("Undetected Error");
         }
     }
 }

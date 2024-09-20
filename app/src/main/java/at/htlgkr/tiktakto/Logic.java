@@ -16,6 +16,10 @@ public class Logic {
         return playerRightNow;
     }
 
+    public static boolean checksIfGameOver(){
+        return true;
+    }
+
     public static void setPlayerRightNow(int playerRightNow) {
         Logic.playerRightNow = playerRightNow;
     }
