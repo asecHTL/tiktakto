@@ -34,21 +34,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        textView.findViewById(R.id.textView);
+        textView = findViewById(R.id.textView);
         textView.setText("Lets play TikTakTo :)");
 
 
-        field00.findViewById(R.id.field00);
-        field01.findViewById(R.id.field01);
-        field02.findViewById(R.id.field02);
+        field00 = findViewById(R.id.field00);
+        field01 = findViewById(R.id.field01);
+        field02 = findViewById(R.id.field02);
 
-        field10.findViewById(R.id.field10);
-        field11.findViewById(R.id.field11);
-        field12.findViewById(R.id.field12);
+        field10 = findViewById(R.id.field10);
+        field11 = findViewById(R.id.field11);
+        field12 = findViewById(R.id.field12);
 
-        field20.findViewById(R.id.field20);
-        field21.findViewById(R.id.field21);
-        field22.findViewById(R.id.field22);
+        field20 = findViewById(R.id.field20);
+        field21 = findViewById(R.id.field21);
+        field22 = findViewById(R.id.field22);
     }
 
 

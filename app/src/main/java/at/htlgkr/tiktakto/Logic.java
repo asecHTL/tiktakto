@@ -16,6 +16,10 @@ public class Logic {
         return playerRightNow;
     }
 
+    public static void setPlayerRightNow(int playerRightNow) {
+        Logic.playerRightNow = playerRightNow;
+    }
+
     public static int checkStatusFieldPlayerOne(int x, int y){
         if (boardStatusPlayerOne[x][y] == 0){
             return 0;
