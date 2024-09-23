@@ -1,5 +1,7 @@
 package at.htlgkr.tiktakto;
 
+import static java.lang.String.valueOf;
+
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
@@ -14,6 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     TextView textView;
+
+    String[][]field = new String[3][3];
+    Symbol symbol = Symbol.X;
 
     Button field00;
     Button field01;
@@ -38,71 +43,83 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView = findViewById(R.id.textView);
         textView.setText("Lets play TikTakTo :)");
 
-
         field00 = findViewById(R.id.field00);
+        field00.setOnClickListener(this);
         field01 = findViewById(R.id.field01);
+        field01.setOnClickListener(this);
         field02 = findViewById(R.id.field02);
+        field02.setOnClickListener(this);
 
         field10 = findViewById(R.id.field10);
+        field10.setOnClickListener(this);
         field11 = findViewById(R.id.field11);
+        field11.setOnClickListener(this);
         field12 = findViewById(R.id.field12);
+        field12.setOnClickListener(this);
 
         field20 = findViewById(R.id.field20);
+        field20.setOnClickListener(this);
         field21 = findViewById(R.id.field21);
+        field21.setOnClickListener(this);
         field22 = findViewById(R.id.field22);
+        field22.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.field00){
-            int temp = Modell.addFieldToPlayer(0,0);
-            eventHandler(temp,field00);
+            Logic.addAndCheck(field,0,0,symbol);
+            field00.setText(valueOf(symbol));
+            Symbol symbolTemp = Logic.statusSymbol(symbol);
+            symbol = symbolTemp;
+
         } else if (v.getId() == R.id.field01) {
-            int temp = Modell.addFieldToPlayer(0,1);
-            eventHandler(temp,field01);
+            Logic.addAndCheck(field,0,0,symbol);
+            field01.setText(valueOf(symbol));
+            Symbol symbolTemp = Logic.statusSymbol(symbol);
+            symbol = symbolTemp;
         } else if (v.getId() == R.id.field02) {
-            int temp = Modell.addFieldToPlayer(0,2);
-            eventHandler(temp,field02);
+            Logic.addAndCheck(field,0,0,symbol);
+            field02.setText(valueOf(symbol));
+            Symbol symbolTemp = Logic.statusSymbol(symbol);
+            symbol = symbolTemp;
         } else if (v.getId() == R.id.field10) {
-            int temp = Modell.addFieldToPlayer(1,0);
-            eventHandler(temp,field10);
+            Logic.addAndCheck(field,0,0,symbol);
+            field10.setText(valueOf(symbol));
+            Symbol symbolTemp = Logic.statusSymbol(symbol);
+            symbol = symbolTemp;
         } else if (v.getId() == R.id.field11) {
-            int temp = Modell.addFieldToPlayer(1,1);
-            eventHandler(temp,field11);
+            Logic.addAndCheck(field,0,0,symbol);
+            field11.setText(valueOf(symbol));
+            Symbol symbolTemp = Logic.statusSymbol(symbol);
+            symbol = symbolTemp;
         } else if (v.getId() == R.id.field12) {
-            int temp = Modell.addFieldToPlayer(1,2);
-            eventHandler(temp,field12);
+            Logic.addAndCheck(field,0,0,symbol);
+            field12.setText(valueOf(symbol));
+            Symbol symbolTemp = Logic.statusSymbol(symbol);
+            symbol = symbolTemp;
         } else if (v.getId() == R.id.field20) {
-            int temp = Modell.addFieldToPlayer(2,0);
-            eventHandler(temp,field20);
+            Logic.addAndCheck(field,0,0,symbol);
+            field20.setText(valueOf(symbol));
+            Symbol symbolTemp = Logic.statusSymbol(symbol);
+            symbol = symbolTemp;
         } else if (v.getId() == R.id.field21) {
-            int temp = Modell.addFieldToPlayer(2,1);
-            eventHandler(temp,field21);
+            Logic.addAndCheck(field,0,0,symbol);
+            field21.setText(valueOf(symbol));
+            Symbol symbolTemp = Logic.statusSymbol(symbol);
+            symbol = symbolTemp;
         } else if (v.getId() == R.id.field22) {
-            int temp = Modell.addFieldToPlayer(2,2);
-            eventHandler(temp,field22);
+            Logic.addAndCheck(field,0,0,symbol);
+            field22.setText(valueOf(symbol));
+            Symbol symbolTemp = Logic.statusSymbol(symbol);
+            symbol = symbolTemp;
             }
 
 
     }
 
     public void eventHandler(int returnValue,Button button){
-        switch (returnValue){
-            case 0 :
-                //Feld wurde zu Player one hinzugefügt
-                button.setText("X");
-            case 1:
-                textView.setText("Player One won !!!!!!");
-            case 2:
-                //Feld wurde zu Player two hinzugefügt
-                button.setText("O");
-            case 3:
-                textView.setText("Player Two won !!!!!!");
-            case 100:
-                System.out.println("Error while playing");
-            default:
-                System.out.println("Undetected Error");
-        }
+
     }
 }
