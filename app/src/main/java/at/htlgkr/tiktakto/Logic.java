@@ -49,4 +49,6 @@ public class Logic {
         // Kein Gewinner gefunden
         return false;
     }
+
+
 }
