@@ -2,6 +2,7 @@ package at.htlgkr.tiktakto;
 
 import static java.lang.String.valueOf;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -71,47 +73,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.field00){
             Logic.addAndCheck(field,0,0,symbol);
             field00.setText(valueOf(symbol));
+            field00.setClickable(false);
+            setPlayerField(symbol,field00);
+            checkWinner(symbol,field);
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
 
         } else if (v.getId() == R.id.field01) {
             Logic.addAndCheck(field,0,0,symbol);
             field01.setText(valueOf(symbol));
+            field01.setClickable(false);
+            setPlayerField(symbol,field01);
+            checkWinner(symbol,field);
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
+
         } else if (v.getId() == R.id.field02) {
             Logic.addAndCheck(field,0,0,symbol);
             field02.setText(valueOf(symbol));
+            field02.setClickable(false);
+            setPlayerField(symbol,field02);
+            checkWinner(symbol,field);
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
+
         } else if (v.getId() == R.id.field10) {
             Logic.addAndCheck(field,0,0,symbol);
             field10.setText(valueOf(symbol));
+            field10.setClickable(false);
+            setPlayerField(symbol,field10);
+            checkWinner(symbol,field);
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
+
         } else if (v.getId() == R.id.field11) {
             Logic.addAndCheck(field,0,0,symbol);
             field11.setText(valueOf(symbol));
+            field11.setClickable(false);
+            setPlayerField(symbol,field11);
+            checkWinner(symbol,field);
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
         } else if (v.getId() == R.id.field12) {
             Logic.addAndCheck(field,0,0,symbol);
             field12.setText(valueOf(symbol));
+            field12.setClickable(false);
+            setPlayerField(symbol,field12);
+            checkWinner(symbol,field);
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
+
         } else if (v.getId() == R.id.field20) {
             Logic.addAndCheck(field,0,0,symbol);
             field20.setText(valueOf(symbol));
+            field20.setClickable(false);
+            setPlayerField(symbol,field20);
+            checkWinner(symbol,field);
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
+
         } else if (v.getId() == R.id.field21) {
             Logic.addAndCheck(field,0,0,symbol);
             field21.setText(valueOf(symbol));
+            field21.setClickable(false);
+            setPlayerField(symbol,field21);
+            checkWinner(symbol,field);
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
+
         } else if (v.getId() == R.id.field22) {
             Logic.addAndCheck(field,0,0,symbol);
             field22.setText(valueOf(symbol));
+            field22.setClickable(false);
+            setPlayerField(symbol,field22);
+            checkWinner(symbol,field);
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
             }
@@ -119,7 +154,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void eventHandler(int returnValue,Button button){
+
+
+
+    @SuppressLint("ResourceAsColor")
+    public void setPlayerField(Symbol symbol, Button button){
+        String temp = String.valueOf(symbol);
+        if (temp.equals("X")){
+            button.setBackgroundColor(R.color.black);
+        }
+    }
+
+
+    public void checkWinner(Symbol symbol, String[][]array){
+        boolean temp = Logic.checkCombined(array);
+        if (temp == true){
+            textView.setText("Player" + String.valueOf(symbol) + "Won");
+
+        }
 
     }
 }
