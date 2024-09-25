@@ -1,7 +1,7 @@
 package at.htlgkr.tiktakto;
 
 public class Logic {
-    public String[][]battleField;
+
 
 
     public static boolean addAndCheck(String[][]field,int x, int y, Symbol symbol){
@@ -20,35 +20,77 @@ public class Logic {
             return Symbol.O;
         }
     }
-
-
-
-    public static boolean checkCombined(String[][]board){
-        for (int i = 0; i < 3; i++) {
-            if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
-                return true;
+    public static boolean checkDiagonal(String[][] board, Symbol symbol) {
+        int counter = 0;
+        for (int i = 0;i < 3; i++){
+            String symbolInBoard = board[i][i];
+            String symbolInput = String.valueOf(symbol);
+            System.out.println(symbolInBoard);
+            System.out.println(symbolInput);
+            if (symbolInput.equals(symbolInBoard)){
+                counter++;
+                if (counter == 3){
+                    return true;
+                }
             }
         }
-
-        // Überprüfung der Spalten (vertikal)
-        for (int i = 0; i < 3; i++) {
-            if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) {
-                return true;
+        int counter2 = 0;
+        for (int j = 2; j >= 0 ; j--){
+            String symbolInBoard = board[j][board.length-1 - j];
+            String symbolInput = String.valueOf(symbol);
+            System.out.println(symbolInBoard);
+            System.out.println(symbolInput);
+            if (symbolInput.equals(symbolInBoard)){
+                counter2++;
+                if (counter2 == 3){
+                    return true;
+                }
             }
         }
-
-        // Überprüfung der Diagonalen
-        if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
-            return true;
-        }
-
-        if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
-            return true;
-        }
-
-        // Kein Gewinner gefunden
         return false;
     }
+
+    public static boolean checkHorizontal(String[][] board, Symbol symbol){
+        for (int i = 0; i < board.length; i++){
+            String tempij = board[i][0];
+            String tempi1j = board[i][1];
+            String tempi2j = board[i][2];
+
+            String temp = String.valueOf(symbol);
+            if (temp.equals(tempij) && temp.equals(tempi1j) && temp.equals(tempi2j)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkVertikal(String[][] board, Symbol symbol){
+        for (int i = 0; i < board.length; i++){
+            String tempij = board[0][i];
+            String tempi1j = board[1][i];
+            String tempi2j = board[2][i];
+
+            String temp = String.valueOf(symbol);
+            if (temp.equals(tempij) && temp.equals(tempi1j) && temp.equals(tempi2j)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    public static boolean checkVertical(String[][] board) {
+        for (int col = 0; col < 3; col++) {
+            if (!board[0][col].equals(" ") && board[0][col].equals(board[1][col]) && board[1][col].equals(board[2][col])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 
 
 }

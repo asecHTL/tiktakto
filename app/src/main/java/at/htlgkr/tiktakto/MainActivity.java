@@ -79,87 +79,94 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.bt_reset){
-            for(int i = 0; i < this.field.length; i++){
-                Arrays.fill(field[i], null);
-            }
+            this.field = null;
         }
         else if (v.getId() == R.id.field00){
             Logic.addAndCheck(field,0,0,symbol);
             field00.setText(valueOf(symbol));
             field00.setClickable(false);
             setPlayerField(symbol,field00);
-            checkWinner(symbol,field);
+            checkWinner(field,symbol);
+
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
 
         } else if (v.getId() == R.id.field01) {
-            Logic.addAndCheck(field,0,0,symbol);
+            Logic.addAndCheck(field,0,1,symbol);
             field01.setText(valueOf(symbol));
             field01.setClickable(false);
             setPlayerField(symbol,field01);
-            checkWinner(symbol,field);
+            checkWinner(field,symbol);
+
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
 
         } else if (v.getId() == R.id.field02) {
-            Logic.addAndCheck(field,0,0,symbol);
+            Logic.addAndCheck(field,0,2,symbol);
             field02.setText(valueOf(symbol));
             field02.setClickable(false);
             setPlayerField(symbol,field02);
-            checkWinner(symbol,field);
+            checkWinner(field,symbol);
+
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
 
         } else if (v.getId() == R.id.field10) {
-            Logic.addAndCheck(field,0,0,symbol);
+            Logic.addAndCheck(field,1,0,symbol);
             field10.setText(valueOf(symbol));
             field10.setClickable(false);
             setPlayerField(symbol,field10);
-            checkWinner(symbol,field);
+            checkWinner(field,symbol);
+
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
 
         } else if (v.getId() == R.id.field11) {
-            Logic.addAndCheck(field,0,0,symbol);
+            Logic.addAndCheck(field,1,1,symbol);
             field11.setText(valueOf(symbol));
             field11.setClickable(false);
             setPlayerField(symbol,field11);
-            checkWinner(symbol,field);
+            checkWinner(field,symbol);
+
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
         } else if (v.getId() == R.id.field12) {
-            Logic.addAndCheck(field,0,0,symbol);
+            Logic.addAndCheck(field,1,2,symbol);
             field12.setText(valueOf(symbol));
             field12.setClickable(false);
             setPlayerField(symbol,field12);
-            checkWinner(symbol,field);
+            checkWinner(field,symbol);
+
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
 
         } else if (v.getId() == R.id.field20) {
-            Logic.addAndCheck(field,0,0,symbol);
+            Logic.addAndCheck(field,2,0,symbol);
             field20.setText(valueOf(symbol));
             field20.setClickable(false);
             setPlayerField(symbol,field20);
-            checkWinner(symbol,field);
+            checkWinner(field,symbol);
+
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
 
         } else if (v.getId() == R.id.field21) {
-            Logic.addAndCheck(field,0,0,symbol);
+            Logic.addAndCheck(field,2,1,symbol);
             field21.setText(valueOf(symbol));
             field21.setClickable(false);
             setPlayerField(symbol,field21);
-            checkWinner(symbol,field);
+            checkWinner(field,symbol);
+
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
 
         } else if (v.getId() == R.id.field22) {
-            Logic.addAndCheck(field,0,0,symbol);
+            Logic.addAndCheck(field,2,2,symbol);
             field22.setText(valueOf(symbol));
             field22.setClickable(false);
             setPlayerField(symbol,field22);
-            checkWinner(symbol,field);
+            checkWinner(field,symbol);
+
             Symbol symbolTemp = Logic.statusSymbol(symbol);
             symbol = symbolTemp;
             }
@@ -178,13 +185,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
-    public void checkWinner(Symbol symbol, String[][]array){
-        boolean temp = Logic.checkCombined(array);
-        if (temp == true){
-            textView.setText("Player" + String.valueOf(symbol) + "Won");
+    public void checkWinner(String[][]board,Symbol symbol){
+        boolean checkDiagonal = Logic.checkDiagonal(board,symbol);
+        boolean checkHorizontal = Logic.checkHorizontal(board,symbol);
+        boolean checkVertikal = Logic.checkVertikal(board,symbol);
+        if (checkDiagonal || checkHorizontal || checkVertikal){
+            textView.setText("Player " + symbol + " Won the Game");
+            field00.setClickable(false);
+            field01.setClickable(false);
+            field02.setClickable(false);
+            field10.setClickable(false);
+            field11.setClickable(false);
+            field12.setClickable(false);
+            field20.setClickable(false);
+            field21.setClickable(false);
+            field22.setClickable(false);
 
         }
 
     }
+
+
+
+
 }
