@@ -13,6 +13,20 @@ public class Logic {
 
     }
 
+    public static boolean checkTie(String[][]board){
+        boolean temp = false;
+        for (int i = 0; i < board.length; i++){
+            for (int j = 0; j < board[i].length; j++){
+                String x = board[i][j];
+                if (x != null){
+                    temp = true;
+                }
+            }
+        }
+        return temp;
+    }
+
+
     public static Symbol statusSymbol(Symbol symbol){
         if (symbol == Symbol.O){
             return Symbol.X;
@@ -80,14 +94,7 @@ public class Logic {
 
 
 
-    public static boolean checkVertical(String[][] board) {
-        for (int col = 0; col < 3; col++) {
-            if (!board[0][col].equals(" ") && board[0][col].equals(board[1][col]) && board[1][col].equals(board[2][col])) {
-                return true;
-            }
-        }
-        return false;
-    }
+
 
 
 

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button field22;
 
 
-    Button bt_reset;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView = findViewById(R.id.textView);
         textView.setText("Lets play TikTakTo :)");
 
-        bt_reset = findViewById(R.id.bt_reset);
-        bt_reset.setOnClickListener(this);
 
         field00 = findViewById(R.id.field00);
         field00.setOnClickListener(this);
@@ -78,10 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.bt_reset){
-            this.field = null;
-        }
-        else if (v.getId() == R.id.field00){
+
+        if (v.getId() == R.id.field00){
             Logic.addAndCheck(field,0,0,symbol);
             field00.setText(valueOf(symbol));
             field00.setClickable(false);
@@ -189,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         boolean checkDiagonal = Logic.checkDiagonal(board,symbol);
         boolean checkHorizontal = Logic.checkHorizontal(board,symbol);
         boolean checkVertikal = Logic.checkVertikal(board,symbol);
+        boolean checkTie = Logic.checkTie(board);
         if (checkDiagonal || checkHorizontal || checkVertikal){
             textView.setText("Player " + symbol + " Won the Game");
             field00.setClickable(false);
@@ -204,6 +201,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
+
 
 
 
